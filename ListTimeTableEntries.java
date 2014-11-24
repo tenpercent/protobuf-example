@@ -5,20 +5,20 @@ import java.io.PrintStream;
 
 class ListTimeTableEntries {
   static void Print(TimeTable timetable) {
-	String formatString = "%15s ; %15s ; %20s ; %20s ; %15s%n"; 
-	System.out.format(formatString,
-		              "Group number",
-					  "Date",
-					  "Subject",
-					  "Professor",
-					  "Room number");
-    for (TimeTable.TimeTableEntry ttentry: timetable.getTtentryList()) {
-	  System.out.format(formatString, 
-		                ttentry.getGroupNumber(), 
-						ttentry.getTime().getDayOfWeek() + " " + ttentry.getTime().getHour() + ":" + ttentry.getTime().getMinute(),
-						ttentry.getSubject(),
-					    ttentry.getProfessor(),
-						ttentry.getRoomNumber());
+  String formatString = "%15s ; %15s ; %20s ; %20s ; %15s%n";
+  System.out.format(formatString,
+                    "Group number",
+                    "Date",
+                    "Subject",
+                    "Professor",
+                    "Room number");
+  for (TimeTable.TimeTableEntry ttentry: timetable.getTtentryList()) {
+  System.out.format(formatString,
+                    ttentry.getGroupNumber(),
+                    ttentry.getTime().getDayOfWeek() + " " + ttentry.getTime().getHour() + ":" + ttentry.getTime().getMinute(),
+                    ttentry.getSubject(),
+                    ttentry.getProfessor(),
+                    ttentry.getRoomNumber());
     }
   }
 
@@ -28,9 +28,7 @@ class ListTimeTableEntries {
       System.exit(-1);
     }
 
-    TimeTable entries =
-      TimeTable.parseFrom(new FileInputStream(args[0]));
-
+    TimeTable entries = TimeTable.parseFrom(new FileInputStream(args[0]));
     Print(entries);
   }
 }
