@@ -5,11 +5,20 @@ import java.io.PrintStream;
 
 class ListTimeTableEntries {
   static void Print(TimeTable timetable) {
-	System.out.println("Group number; date; subject; professor; room number");
+	String formatString = "%15s ; %15s ; %20s ; %20s ; %15s%n"; 
+	System.out.format(formatString,
+		              "Group number",
+					  "Date",
+					  "Subject",
+					  "Professor",
+					  "Room number");
     for (TimeTable.TimeTableEntry ttentry: timetable.getTtentryList()) {
-	  System.out.println(ttentry.getGroupNumber() + " ; " + ttentry.getTime().getDayOfWeek() + " " +
-		                 ttentry.getTime().getHour() + ":" + ttentry.getTime().getMinute() + " ; " + 
-						 ttentry.getProfessor() + " ; " + ttentry.getRoomNumber());
+	  System.out.format(formatString, 
+		                ttentry.getGroupNumber(), 
+						ttentry.getTime().getDayOfWeek() + " " + ttentry.getTime().getHour() + ":" + ttentry.getTime().getMinute(),
+						ttentry.getSubject(),
+					    ttentry.getProfessor(),
+						ttentry.getRoomNumber());
     }
   }
 
